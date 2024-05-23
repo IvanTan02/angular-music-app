@@ -20,6 +20,7 @@ export class AuthGuard implements CanActivate {
         tokenExpiration: queryParams['expiresIn'],
       }
 
+      this.authService.isAuthenticated = true;
       this.authService.initCredentials(creds);
       this.router.navigate(['/']);
       return false;
