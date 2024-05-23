@@ -21,7 +21,8 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <app-button *ngIf="!isAuthenticated" [text]="'Login With Spotify'" [icon]="'login'"></app-button>
+      <app-button *ngIf="!isAuthenticated" [text]="'Login With Spotify'" [icon]="'login'"
+        (onClick)="onLoginWithSpotify()"></app-button>
     </div>
   </div>
 </nav>

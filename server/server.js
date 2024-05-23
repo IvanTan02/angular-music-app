@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
 
     const { code } = req.query;
-    const clientRedirect = 'http://localhost:3000/login';
+    const clientRedirect = 'http://localhost:4200/auth';
 
     const spotifyApi = new SpotifyWebApi({
         clientId: 'eafcddb12107467390a765e15f4e9e71',
