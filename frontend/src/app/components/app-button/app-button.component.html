@@ -1,0 +1,6 @@
+<button mat-flat-button [color]="color" [style.background-color]="backgroundColor" [disabled]="isDisabled || isLoading">
+    <div class="d-flex flex-row-center-center py-2">
+        <mat-icon *ngIf="icon" class="me-2">{{icon}}</mat-icon>
+        <div *ngIf="text" class="d-flex align-items-center">{{text}}</div>
+    </div>
+</button>
