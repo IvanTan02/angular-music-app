@@ -12,18 +12,11 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent {
 
   isAuthenticated: boolean = false;
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated;
-  }
-
-  onLoginWithSpotify() {
-    window.location.href = environment.spotify.authUrl;
+  constructor(private authService: AuthService) {
   }
 
 }

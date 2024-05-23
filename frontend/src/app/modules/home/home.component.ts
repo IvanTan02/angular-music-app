@@ -1,18 +1,26 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../shared/auth/auth.service';
+import { AppButtonComponent } from '../../components/app-button/app-button.component';
+import { environment } from '../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, AppButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  authToken: string = '';
+
+  isAuthenticated: boolean = false;
 
   constructor(private authService: AuthService) { }
   ngOnInit() {
-    console.log('AUTH', this.authService.accessToken)
+    this.isAuthenticated = this.authService.isAuthenticated;
+  }
+
+  onLoginWithSpotify() {
+    window.location.href = environment.spotify.authUrl;
   }
 }
