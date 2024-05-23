@@ -1,19 +1,22 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { Component,  OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SpotifyAuthCredentials } from '../../models/auth.model';
 import { AuthService } from './auth.service';
 
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'auth-redirect',
+  standalone: true,
+  imports: [],
+  template: '<p>Redirecting...</p>',
 })
-export class AuthGuard implements CanActivate {
+export class AuthRedirectComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const queryParams = route.queryParams
+  ngOnInit() {
+    const queryParams = this.route.snapshot.queryParams
 
-    if (this.hasAllCredentials(route)) {
+    if (this.hasAllCredentials(this.route.snapshot)) {
       const creds: SpotifyAuthCredentials = {
         accessToken: queryParams['accessToken'],
         refreshToken: queryParams['refreshToken'],
