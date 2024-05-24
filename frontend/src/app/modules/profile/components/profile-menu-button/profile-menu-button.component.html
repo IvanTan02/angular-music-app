@@ -1,0 +1,14 @@
+<div>
+    <button mat-flat-button [matMenuTriggerFor]="menu" class="p-3">
+        <div class="d-flex flex-row-center-center profile-menu-container">
+            <img class="ms-1 me-2 profile-avatar" src="https://i.scdn.co/image/ab67757000003b824835745ecd516f8c8dbb4e5e"
+                alt="">
+            <div class="ms-1 me-2 d-flex align-items-center">Account</div>
+            <mat-icon class="me-1 mt-1">arrow_drop_down</mat-icon>
+        </div>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="onViewProfile()">View Profile</button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+    </mat-menu>
+</div>

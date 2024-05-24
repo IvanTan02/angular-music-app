@@ -1,7 +1,7 @@
 <div *ngIf="!isAuthenticated">
     <h1 class="text-center mt-5">Login With Spotify</h1>
     <div class="d-flex justify-content-center align-items-center">
-        <app-button [text]="'Login With Spotify'" [icon]="'login'" (onClick)="onLoginWithSpotify()"></app-button>
+        <app-button [text]="'Login With Spotify'" [iconLeft]="'login'" (onClick)="onLoginWithSpotify()"></app-button>
     </div>
 </div>
 <div *ngIf="isAuthenticated">

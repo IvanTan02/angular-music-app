@@ -2,8 +2,9 @@
     <button mat-flat-button [color]="color" [style.background-color]="backgroundColor"
         [disabled]="isDisabled || isLoading" (click)="buttonClicked()">
         <div class="d-flex flex-row-center-center py-2">
-            <mat-icon *ngIf="icon" class="me-2">{{icon}}</mat-icon>
+            <mat-icon *ngIf="iconLeft" class="me-2">{{iconLeft}}</mat-icon>
             <div *ngIf="text" class="d-flex align-items-center">{{text}}</div>
+            <mat-icon *ngIf="iconRight" class="me-2">{{iconRight}}</mat-icon>
         </div>
     </button>
 </div>

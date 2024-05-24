@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,10 +13,11 @@ import { CommonModule } from '@angular/common';
 export class AppButtonComponent {
 
   @Input() text: string = '';
-  @Input() icon: string = '';
+  @Input() iconLeft: string = '';
+  @Input() iconRight: string = '';
   @Input() color: string = '';
   @Input() backgroundColor: string = '';
-  
+
   @Input() isDisabled: boolean = false;
   @Input() isLoading: boolean = false;
 

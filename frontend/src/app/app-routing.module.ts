@@ -13,7 +13,12 @@ export const routes: Routes = [
     {
         path: 'auth',
         component: AuthRedirectComponent
-    }
+    },
+    {
+        path: 'profile',
+        component: LayoutComponent,
+        loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+    },
 ];
 
 @NgModule({

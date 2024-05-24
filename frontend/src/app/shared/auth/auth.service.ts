@@ -14,7 +14,8 @@ export class AuthService {
     }
 
     public get accessToken(): string {
-        return this._accessToken;
+        if (this._accessToken) return this._accessToken;
+        return this.storageService.get('spotifyAccessToken');
     }
 
     public get isAuthenticated(): boolean {
@@ -39,7 +40,9 @@ export class AuthService {
     }
 
     tryAutoLogin(): void {
-        this._isAuthenticated = this.storageService.get('spotifyAccessToken') ? true : false;
+        const accessToken = this.storageService.get('spotifyAccessToken');
+        if (accessToken) this._accessToken = accessToken;
+        this._isAuthenticated = accessToken ? true : false;
     }
 
     private initSessionInterval(refreshInterval: number): void {
