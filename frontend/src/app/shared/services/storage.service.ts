@@ -16,11 +16,8 @@ export class StorageService {
         if (item) {
 
             const itemObject = JSON.parse(item);
-            console.log('Uwu', itemObject)
-            console.log(Date.now())
             if (itemObject.expiresAt > 0 && itemObject.expiresAt <= Date.now()) {
-                console.log('EXPIRE')
-                this.delete(key); // remove item if expired
+                this.delete(key);
                 return undefined;
             }
             return itemObject.value;

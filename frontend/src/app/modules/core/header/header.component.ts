@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AppButtonComponent } from '../../../components/app-button/app-button.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { environment } from '../../../../environments/environment';
-import { AuthService } from '../../auth/auth.service';
-import { ProfileMenuButtonComponent } from '../../../modules/profile/components/profile-menu-button/profile-menu-button.component';
+import { AuthService } from '../../../shared/auth/auth.service';
+import { ProfileMenuButtonComponent } from '../../profile/components/profile-menu-button/profile-menu-button.component';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, AppButtonComponent, ProfileMenuButtonComponent],
+  imports: [CommonModule, RouterModule, AppButtonComponent, ProfileMenuButtonComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

@@ -18,10 +18,12 @@ export const routes: Routes = [
     {
         path: 'profile',
         component: LayoutComponent,
-        resolve: {
-            userProfile: ProfileResolver
-        },
         loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+    },
+    {
+        path: 'player',
+        component: LayoutComponent,
+        loadChildren: () => import('./modules/player/player.module').then(m => m.PlayerModule),
     },
 ];
 

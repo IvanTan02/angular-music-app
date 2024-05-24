@@ -10,7 +10,6 @@ export class ProfileService {
     private _profileDetails: SpotifyProfileDetails;
 
     constructor(private authService: AuthService) {
-        console.log(this.authService.accessToken);
         this.spotifyWebApi.setAccessToken(this.authService.accessToken);
     }
 
@@ -21,7 +20,6 @@ export class ProfileService {
     initProfileDetails(): Promise<SpotifyProfileDetails> {
         return this.spotifyWebApi.getMe().then((response) => {
             this._profileDetails = response.body;
-            console.log(this._profileDetails);
             return this._profileDetails;
         });
     }

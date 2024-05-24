@@ -10,7 +10,6 @@ export class HomeGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService) { }
 
   canActivate(): boolean {
-    console.log(this.authService.isAuthenticated);
     return true;
   }
 }
