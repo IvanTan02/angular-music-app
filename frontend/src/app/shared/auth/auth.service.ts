@@ -42,7 +42,7 @@ export class AuthService {
         this._isAuthenticated = true;
         this.setAuthenticated(true);
 
-        const tokenExpiryTime = (this._tokenExpiration - 120) * 1000;
+        const tokenExpiryTime = (this._tokenExpiration - 120);
         this.storageService.set('spotifyAccessToken', this._accessToken, tokenExpiryTime);
         this.storageService.set('spotifyRefreshToken', this._refreshToken);
 
@@ -52,7 +52,7 @@ export class AuthService {
     tryAutoLogin(): void {
         const accessToken = this.storageService.get('spotifyAccessToken');
         if (accessToken) this._accessToken = accessToken;
-        this._isAuthenticated = accessToken ? true : false;
+        this.setAuthenticated(accessToken ? true : false);
     }
 
     logoutUser(): void {
@@ -73,7 +73,7 @@ export class AuthService {
         console.log('REFRESH ACCESS TOKEN')
         this.http.post('http://localhost:3001/refresh', { refreshToken: this._refreshToken }).subscribe({
             next: (response: any) => {
-                const tokenExpiryTime = (response.expiresIn - 120) * 1000;
+                const tokenExpiryTime = (response.expiresIn - 120);
                 this.storageService.set('spotifyAccessToken', response.accessToken, tokenExpiryTime);
             }
         })

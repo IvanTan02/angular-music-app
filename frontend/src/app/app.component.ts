@@ -12,4 +12,10 @@ import { AuthService } from './shared/auth/auth.service';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.tryAutoLogin();
+  }
 }

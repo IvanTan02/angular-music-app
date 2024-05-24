@@ -3,6 +3,7 @@ import { RouterModule } from "@angular/router";
 import { Routes } from '@angular/router';
 import { AuthRedirectComponent } from "./shared/auth/auth-redirect.component";
 import { LayoutComponent } from "./modules/core/layout/layout.component";
+import { ProfileResolver } from "./shared/resolvers/profile-resolver.service";
 
 export const routes: Routes = [
     {
@@ -17,6 +18,9 @@ export const routes: Routes = [
     {
         path: 'profile',
         component: LayoutComponent,
+        resolve: {
+            userProfile: ProfileResolver
+        },
         loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
     },
 ];

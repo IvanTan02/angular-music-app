@@ -6,11 +6,13 @@ import { AuthService } from '../../shared/auth/auth.service';
 import { ProfileService } from './profile.service';
 import { ProfileMenuButtonComponent } from './components/profile-menu-button/profile-menu-button.component';
 import { SpotifyProfileDetails } from '../../models/auth.model';
+import { MatCardModule } from '@angular/material/card';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, AppButtonComponent, ProfileMenuButtonComponent],
+  imports: [CommonModule, MatCardModule, AppButtonComponent, ProfileMenuButtonComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -18,10 +20,15 @@ export class ProfileComponent {
 
   profilesDetails: SpotifyProfileDetails;
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.profilesDetails = this.profileService.profileDetails;
-    console.log(this.profilesDetails);
+    this.route.data.subscribe((data) => {
+      this.profilesDetails = data.userProfile;
+    })
+  }
+
+  onViewSpotifyProfile() {
+    window.location.href = `${this.profilesDetails.external_urls.spotify}`
   }
 }

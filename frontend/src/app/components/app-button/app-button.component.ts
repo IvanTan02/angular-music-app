@@ -17,6 +17,7 @@ export class AppButtonComponent {
   @Input() iconRight: string = '';
   @Input() color: string = '';
   @Input() backgroundColor: string = '';
+  @Input() href: string = '';
 
   @Input() isDisabled: boolean = false;
   @Input() isLoading: boolean = false;

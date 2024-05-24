@@ -12,17 +12,17 @@ export class ProfileService {
     constructor(private authService: AuthService) {
         console.log(this.authService.accessToken);
         this.spotifyWebApi.setAccessToken(this.authService.accessToken);
-        this.initProfileDetails();
     }
 
     public get profileDetails() {
         return this._profileDetails;
     }
 
-    initProfileDetails() {
-        this.spotifyWebApi.getMe().then((response) => {
+    initProfileDetails(): Promise<SpotifyProfileDetails> {
+        return this.spotifyWebApi.getMe().then((response) => {
             this._profileDetails = response.body;
             console.log(this._profileDetails);
+            return this._profileDetails;
         });
     }
 }

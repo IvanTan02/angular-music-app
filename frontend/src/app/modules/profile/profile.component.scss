@@ -1,0 +1,27 @@
+mat-card {
+    box-shadow: 0 0 10px rgba(65, 68, 70, 0.3);
+}
+
+.profile-card {
+    padding: 1.5em 5em;
+
+    & .profile-avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(65, 68, 70, 0.7);
+    }
+
+    & .profile-name,
+    & .profile-email,
+    & .profile-country {
+        font-size: 1.2em;
+        font-weight: light;
+
+        & span {
+            font-weight: bold;
+        }
+    }
+
+
+}
