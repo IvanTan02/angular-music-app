@@ -3,6 +3,7 @@ import { AuthService } from '../../shared/auth/auth.service';
 import { AppButtonComponent } from '../../components/app-button/app-button.component';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,24 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
 
   isAuthenticated: boolean = false;
+  private authSubscription: Subscription;
 
   constructor(private authService: AuthService) { }
   ngOnInit() {
-    this.isAuthenticated = this.authService.isAuthenticated;
+    this.authSubscription = this.authService.isAuthenticated$.subscribe(
+      (isAuthenticated) => {
+        this.isAuthenticated = isAuthenticated;
+      }
+    );
   }
 
   onLoginWithSpotify() {
     window.location.href = environment.spotify.authUrl;
+  }
+
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
   }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../auth/auth.service';
 import { ProfileMenuButtonComponent } from '../../../modules/profile/components/profile-menu-button/profile-menu-button.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +17,22 @@ import { ProfileMenuButtonComponent } from '../../../modules/profile/components/
 export class HeaderComponent {
 
   isAuthenticated: boolean = false;
+  private authSubscription: Subscription;
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.isAuthenticated = this.authService.isAuthenticated;
+    this.authSubscription = this.authService.isAuthenticated$.subscribe(
+      (isAuthenticated) => {
+        this.isAuthenticated = isAuthenticated;
+      }
+    );
   }
 
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
+  }
 }

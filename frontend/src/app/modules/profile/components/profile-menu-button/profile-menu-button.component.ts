@@ -23,10 +23,10 @@ export class ProfileMenuButtonComponent implements OnInit {
   }
 
   onViewProfile() {
-
+    this.router.navigate(['/profile']);
   }
 
   onLogout() {
-
+    this.authService.logoutUser();
   }
 }
